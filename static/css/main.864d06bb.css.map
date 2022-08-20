@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.864d06bb.css","mappings":"AAAA,EACI,QAAW,CACX,SACJ,CACA,oBACI,YACJ","sources":["App.css"],"sourcesContent":["* {\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n::-webkit-scrollbar {\r\n    display: none;\r\n}\r\n"],"names":[],"sourceRoot":""}

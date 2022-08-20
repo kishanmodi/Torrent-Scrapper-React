@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Torrent-Scrapper-React/static/css/main.864d06bb.css",
+    "main.js": "/Torrent-Scrapper-React/static/js/main.2f2856a1.js",
+    "index.html": "/Torrent-Scrapper-React/index.html",
+    "main.864d06bb.css.map": "/Torrent-Scrapper-React/static/css/main.864d06bb.css.map",
+    "main.2f2856a1.js.map": "/Torrent-Scrapper-React/static/js/main.2f2856a1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.864d06bb.css",
+    "static/js/main.2f2856a1.js"
+  ]
+}
