@@ -9,11 +9,7 @@ const NavBar = (props) => {
             }`}
         >
             <div className='ms-2 d-flex justify-items-between align-items-center'>
-                <img
-                    src='http://localhost:3000/assets/brand.png'
-                    style={{ width: '50px', height: '50px' }}
-                    alt='brand'
-                />
+                <img src='/Torrent-Scrapper-React/brand.png' style={{ width: '50px', height: '50px' }} alt='brand' />
                 <h2 className='navbar-brand p-0 m-0 ps-3 fw-bold'>Magnet Scrapper</h2>
             </div>
 
@@ -24,7 +20,7 @@ const NavBar = (props) => {
                 data-toggle='button'
                 onClick={() => (darkMode ? setDarkMode(false) : setDarkMode(true))}
             >
-                {darkMode ? <i class='bi bi-brightness-high'></i> : <i class='bi bi-moon'></i>}
+                {darkMode ? <i className='bi bi-brightness-high'></i> : <i className='bi bi-moon'></i>}
             </button>
         </nav>
     );

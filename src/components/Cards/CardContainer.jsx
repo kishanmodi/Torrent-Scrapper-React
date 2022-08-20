@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card } from './Card';
 export const CardContainer = (props) => {
+    useEffect(() => {}, [props.items]);
     return (
         <div className='row d-flex m-0 p-0 mt-3 gx-4 justify-content-center'>
-            {props.items.map((item) => {
-                return (
-                    <div className='col-xl-3 col-lg-4 col-md-6 mb-4 col-sm-12 col-12'>
-                        <Card item={item} key={item.date} />
-                    </div>
-                );
+            {props.items.map((item, index) => {
+                return <Card item={item} key={index} index={index} Loading={props.loading} />;
             })}
         </div>
     );

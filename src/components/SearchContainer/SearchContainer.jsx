@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 export const SearchContainer = (props) => {
     const { darkMode, setItems, setLoading } = props;
     const [query, setQuery] = useState('');
+    const [prevQuery, setPrevQuery] = useState(query);
     const [safeSearch, setSafeSearch] = useState(false);
 
     const submitHandler = async (siteId) => {
+        setPrevQuery(query);
         setLoading(true);
-        const torrents = await axios.get(
-            `http://samcloud.tplinkdns.com:50000/getTorrents?search_key=${query}&site_id=${siteId}&safe_search=${safeSearch}`
-        );
+        setItems([]);
+        const torrents = await axios.get(`https://tscrap.herokuapp.com/torrents?key=${query}&safe=${safeSearch}`);
         setItems(torrents.data);
         if (torrents.data) {
             setLoading(false);
@@ -19,28 +20,18 @@ export const SearchContainer = (props) => {
         console.log(torrents.data);
     };
     return (
-        <div
-            className={`container-fluid p-0 text-center  rounded-2 ${
-                darkMode ? ' bg-dark' : ' bg-light border border-dark'
-            }`}
-        >
+        <div className={`container-fluid p-0 text-center  rounded-2 ${darkMode ? ' bg-dark' : ' bg-light border border-dark'}`}>
             <div className='row d-flex justify-content-center align-items-center py-3'>
                 <div className='col-xl-6 col-md-8 px-4'>
-                    <div class='input-group'>
-                        <span
-                            class={`input-group-text${
-                                darkMode ? ' bg-secondary text-light' : 'bg-primary text-light border border-dark'
-                            }`}
-                        >
+                    <div className='input-group'>
+                        <span className={`input-group-text ${darkMode ? ' bg-secondary text-light' : 'bg-primary text-light border border-dark'}`}>
                             Search Query
                         </span>
                         <input
                             type='text'
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            className={`form-control ${
-                                darkMode ? ' bg-dark text-light' : ' bg-light border border-dark'
-                            }`}
+                            className={`form-control ${darkMode ? ' bg-dark text-light' : ' bg-light border border-dark'}`}
                         />
                     </div>
                 </div>
@@ -48,11 +39,7 @@ export const SearchContainer = (props) => {
             <div className='row d-flex justify-content-center align-items-center '>
                 <div className='col-xl-4 col-md-4 '>
                     <div className='input-group mb-3 justify-content-center'>
-                        <div
-                            className={`input-group-text${
-                                darkMode ? ' bg-secondary text-light' : ' bg-light border border-dark'
-                            }`}
-                        >
+                        <div className={`input-group-text${darkMode ? ' bg-secondary text-light' : ' bg-light border border-dark'}`}>
                             <input
                                 className='form-check-input mt-0'
                                 type='checkbox'
@@ -60,11 +47,7 @@ export const SearchContainer = (props) => {
                                 onChange={(e) => setSafeSearch(e.target.checked)}
                             />
                         </div>
-                        <div
-                            class={`input-group-text${
-                                darkMode ? ' bg-secondary text-light' : ' bg-light border border-dark'
-                            }`}
-                        >
+                        <div className={`input-group-text${darkMode ? ' bg-secondary text-light' : ' bg-light border border-dark'}`}>
                             Safe Search (Beta)
                         </div>
                     </div>
@@ -76,7 +59,11 @@ export const SearchContainer = (props) => {
                             <button
                                 type='button'
                                 name='1'
-                                onClick={(e) => submitHandler(e.target.name)}
+                                onClick={(e) => {
+                                    if (query !== prevQuery) {
+                                        submitHandler(e.target.name);
+                                    }
+                                }}
                                 className={`btn btn-secondary  border border-white${
                                     darkMode ? ' bg-secondary text-light' : ' bg-primary     border border-dark'
                                 }`}
@@ -90,7 +77,11 @@ export const SearchContainer = (props) => {
                                 className={`btn btn-secondary  border border-white${
                                     darkMode ? ' bg-secondary text-light' : ' bg-primary border border-dark'
                                 }`}
-                                onClick={(e) => submitHandler(e.target.name)}
+                                onClick={(e) => {
+                                    if (query !== prevQuery) {
+                                        submitHandler(e.target.name);
+                                    }
+                                }}
                             >
                                 ThePirateBay
                             </button>
