@@ -9,7 +9,11 @@ const NavBar = (props) => {
             }`}
         >
             <div className='ms-2 d-flex justify-items-between align-items-center'>
-                <img src='/Torrent-Scrapper-React/brand.png' style={{ width: '50px', height: '50px' }} alt='brand' />
+                <img
+                    src='https://raw.githubusercontent.com/kishanmodi/Torrent-Scrapper-React/main/public/brand.png'
+                    style={{ width: '50px', height: '50px' }}
+                    alt='brand'
+                />
                 <h2 className='navbar-brand p-0 m-0 ps-3 fw-bold'>Magnet Scrapper</h2>
             </div>
 
