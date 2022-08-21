@@ -6,18 +6,23 @@ import { SearchButton } from './SearchButton';
 import { AppContext } from '../../Context/AppContext';
 
 export const SearchContainer = () => {
-    const { darkMode, setItems, setLoading, query, setPrevQuery, safeSearch } = useContext(AppContext);
+    const { darkMode, setItems, setLoading, query, setPrevQuery, safeSearch, setDataAvail } = useContext(AppContext);
     const submitHandler = async (siteId) => {
-        setPrevQuery(query);
-        setLoading(true);
-        setItems([]);
-        const torrents = await axios.get(`https://tscrap.herokuapp.com/torrents?key=${query}&safe=${safeSearch}`);
-        setItems(torrents.data);
-        if (torrents.data) {
+        try {
+            setPrevQuery(query);
+            setLoading(true);
+            setDataAvail(true);
+            setItems([]);
+            const torrents = await axios.get(`https://tscrap.herokuapp.com/torrents?key=${query}&safe=${safeSearch}`);
+            setItems(torrents.data);
+            if (torrents.data.length === 0) {
+                console.log(torrents.data.length);
+                setDataAvail(false);
+            }
             setLoading(false);
+        } catch (err) {
+            console.log(err);
         }
-
-        console.log(torrents.data);
     };
     return (
         <div

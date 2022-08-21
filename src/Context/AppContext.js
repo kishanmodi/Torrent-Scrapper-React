@@ -9,6 +9,7 @@ export const AppContextProvider = ({ children }) => {
     const [query, setQuery] = useState('');
     const [prevQuery, setPrevQuery] = useState(query);
     const [safeSearch, setSafeSearch] = useState(false);
+    const [dataAvail, setDataAvail] = useState(true);
     return (
         <AppContext.Provider
             value={{
@@ -23,7 +24,9 @@ export const AppContextProvider = ({ children }) => {
                 prevQuery,
                 setPrevQuery,
                 safeSearch,
-                setSafeSearch
+                setSafeSearch,
+                dataAvail,
+                setDataAvail
             }}
         >
             {children}

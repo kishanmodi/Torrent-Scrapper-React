@@ -18,9 +18,9 @@ export const Card = (props) => {
     // it starts the loading spinner and stops when data is fetched
     // disables the TorrentDataButton when clicked
     const getTorrentData = async (link) => {
-        setDataLoading(true);
-        settorrentDataButton(false);
         try {
+            setDataLoading(true);
+            settorrentDataButton(false);
             const torrentData = await axios.get(`https://tscrap.herokuapp.com/magnet?link=${link}`);
             setTorrent(torrentData.data);
             if (torrentData.data) {
@@ -49,12 +49,36 @@ export const Card = (props) => {
                     <CardDetails item={item} />
                     <div className='col-12 accordion mt-2 justify-content-center align-items-center'>
                         <div className='accordion-item border-0 bg-dark'>
-                            {showTorrentDataButton ? <GetDataButton item={item} getTorrentData={getTorrentData} index={props.index} /> : null}
+                            {showTorrentDataButton ? (
+                                <GetDataButton item={item} getTorrentData={getTorrentData} index={props.index} />
+                            ) : null}
+
                             <div id={`acc${props.index}`} className={`accordion-collapse rounded border bg-dark collapse`}>
-                                <div className='accordion-body mt-2'>{dataLoading ? <Loading /> : <TorrentData item={item} files={files} />}</div>
-                                <div className='row w-100 align-items-center justify-content-around m-0 p-0 mb-2'>
-                                    <MagnetButton buttonText={buttonText} clickHandler={copyToClipboardHandler} btnStyle='btn-warning' />
-                                    <MagnetButton buttonText='Open' clickHandler={openInNewWindow} btnStyle='btn-outline-warning' />
+                                <div className='accordion-body mt-2'>
+                                    {dataLoading ? (
+                                        <Loading />
+                                    ) : (
+                                        !dataLoading &&
+                                        (Object.keys(item).length ? (
+                                            <div>
+                                                <TorrentData item={item} files={files} />
+                                                <div className='row w-100 align-items-center justify-content-around m-0 p-0 mb-1'>
+                                                    <MagnetButton
+                                                        buttonText={buttonText}
+                                                        clickHandler={copyToClipboardHandler}
+                                                        btnStyle='btn-warning'
+                                                    />
+                                                    <MagnetButton
+                                                        buttonText='Open'
+                                                        clickHandler={openInNewWindow}
+                                                        btnStyle='btn-outline-warning'
+                                                    />
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className='text-center mt-2 fw-bold'>Magnet Data Unavailable</div>
+                                        ))
+                                    )}
                                 </div>
                             </div>
                         </div>

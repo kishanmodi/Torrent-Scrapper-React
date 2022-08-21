@@ -19,12 +19,12 @@ export const NavBar = (props) => {
 
             <button
                 type='button'
-                style={{ borderRadius: '50%' }}
+                style={{ padding: '0', borderRadius: '50%', height: '30px', width: '30px', textAlign: 'center' }}
                 className={`btn ${darkMode ? 'btn-light' : 'btn-dark'}`}
                 data-toggle='button'
                 onClick={() => (darkMode ? setDarkMode(false) : setDarkMode(true))}
             >
-                {darkMode ? <i className='bi bi-brightness-high'></i> : <i className='bi bi-moon'></i>}
+                {darkMode ? <i className='bi bi-brightness-high'></i> : <i class='fa-solid fa-moon'></i>}
             </button>
         </nav>
     );
