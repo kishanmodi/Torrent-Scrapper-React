@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import './App.css';
-import './styles/bootstrap.min.css';
-import { Loading } from './components/Loading/Loading';
-import { NavBar } from './components/NavBar/NavBar';
-import { SearchContainer } from './components/SearchContainer/SearchContainer';
-import { CardContainer } from './components/Cards/CardContainer';
+import { Loading } from './components/Loading/';
+import { NavBar } from './components/NavBar';
+import { SearchContainer } from './components/SearchContainer';
+import { CardContainer } from './components/Cards';
 import { AppContext } from './Context/AppContext';
 const App = () => {
     const { darkMode, isLoading } = useContext(AppContext);
