@@ -1,14 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { SafeSearch } from './SafeSearch';
 import { SearchBox } from './SearchBox';
 import { SearchButton } from './SearchButton';
-export const SearchContainer = (props) => {
-    const { darkMode, setItems, setLoading } = props;
-    const [query, setQuery] = useState('');
-    const [prevQuery, setPrevQuery] = useState(query);
-    const [safeSearch, setSafeSearch] = useState(false);
+import { AppContext } from '../../Context/AppContext';
 
+export const SearchContainer = () => {
+    const { darkMode, setItems, setLoading, query, setPrevQuery, safeSearch } = useContext(AppContext);
     const submitHandler = async (siteId) => {
         setPrevQuery(query);
         setLoading(true);
@@ -22,26 +20,24 @@ export const SearchContainer = (props) => {
         console.log(torrents.data);
     };
     return (
-        <div className={`container-fluid p-0 text-center  rounded-2 ${darkMode ? ' bg-dark' : ' bg-light border border-dark'}`}>
+        <div
+            className={`container-fluid p-0 text-center  rounded-2 ${
+                darkMode ? ' bg-dark' : ' bg-light border border-dark'
+            }`}
+        >
             <div className='row d-flex justify-content-center align-items-center py-3'>
-                <SearchBox darkMode={darkMode} query={query} setQuery={setQuery} />
+                <SearchBox />
             </div>
             <div className='row d-flex justify-content-center align-items-center '>
                 <div className='col-xl-4 col-md-4 '>
-                    <SafeSearch darkMode={darkMode} safeSearch={safeSearch} setSafeSearch={setSafeSearch} />
+                    <SafeSearch />
                 </div>
 
                 <div className='row d-flex justify-content-center align-items-center mb-3'>
                     <div className='col-xl-4 col-md-4'>
                         <div className='btn-group' role='group'>
-                            <SearchButton query={query} prevQuery={prevQuery} buttonName='1337x' submitHandler={submitHandler} darkMode={darkMode} />
-                            <SearchButton
-                                query={query}
-                                prevQuery={prevQuery}
-                                buttonName='ThePirateBay'
-                                submitHandler={submitHandler}
-                                darkMode={darkMode}
-                            />
+                            <SearchButton buttonName='1337x' submitHandler={submitHandler} />
+                            <SearchButton buttonName='ThePirateBay' submitHandler={submitHandler} />
                         </div>
                     </div>
                 </div>

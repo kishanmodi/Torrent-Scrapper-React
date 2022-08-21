@@ -1,7 +1,7 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { AppContext } from '../../Context/AppContext';
 export const NavBar = (props) => {
-    const { darkMode, setDarkMode } = props;
+    const { darkMode, setDarkMode } = useContext(AppContext);
     return (
         <nav
             className={`navbar justify-content-between align-items-center p-3 ${

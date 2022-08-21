@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../Context/AppContext';
 
-export const SearchBox = (props) => {
-    const { darkMode, query, setQuery } = props;
+export const SearchBox = () => {
+    const { darkMode, query, setQuery } = useContext(AppContext);
     return (
         <div className='col-xl-6 col-md-8 px-4'>
             <div className='input-group'>
-                <span className={`input-group-text ${darkMode ? ' bg-secondary text-light' : 'bg-primary text-light border border-dark'}`}>
+                <span
+                    className={`input-group-text ${
+                        darkMode ? ' bg-secondary text-light' : 'bg-primary text-light border border-dark'
+                    }`}
+                >
                     Search Query
                 </span>
                 <input

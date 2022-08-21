@@ -1,19 +1,21 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { AppContext } from '../../Context/AppContext';
 export const SearchButton = (props) => {
-    const { query, prevQuery, buttonName, submitHandler, darkMode } = props;
+    const { query, prevQuery, darkMode } = useContext(AppContext);
     return (
         <button
             type='button'
             name='2'
-            className={`btn btn-secondary  border border-white${darkMode ? ' bg-secondary text-light' : ' bg-primary border border-dark'}`}
+            className={`btn btn-secondary  border border-white${
+                darkMode ? ' bg-secondary text-light' : ' bg-primary border border-dark'
+            }`}
             onClick={(e) => {
                 if (query !== prevQuery) {
-                    submitHandler(e.target.name);
+                    props.submitHandler(e.target.name);
                 }
             }}
         >
-            {buttonName}
+            {props.buttonName}
         </button>
     );
 };
