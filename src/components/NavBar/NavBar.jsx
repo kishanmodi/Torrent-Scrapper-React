@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavBar = (props) => {
+export const NavBar = (props) => {
     const { darkMode, setDarkMode } = props;
     return (
         <nav
