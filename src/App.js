@@ -5,8 +5,9 @@ import { NavBar } from './components/NavBar';
 import { SearchContainer } from './components/SearchContainer';
 import { CardContainer } from './components/Cards';
 import { AppContext } from './Context/AppContext';
+import ListContainer from './components/List/ListContainer';
 const App = () => {
-    const { darkMode, isLoading, dataAvail } = useContext(AppContext);
+    const { darkMode, isLoading, dataAvail, listMode } = useContext(AppContext);
 
     return (
         <div className={`min-vh-100 position-relative ${darkMode ? ' bg-secondary' : ' bg-light'}`}>
@@ -15,7 +16,7 @@ const App = () => {
                 <SearchContainer />
                 {isLoading ? <Loading /> : null}
                 {!isLoading && !dataAvail ? <div className='text-center mt-2 fw-bold'>No Torrent Found</div> : null}
-                <CardContainer />
+                {listMode ? <ListContainer /> : <CardContainer />}
             </div>
         </div>
     );

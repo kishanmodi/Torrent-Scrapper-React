@@ -5,6 +5,7 @@ import { Loading } from '../Loading/Loading';
 import { GetDataButton } from './GetDataButton';
 import { MagnetButton } from './MagnetButton';
 import { TorrentData } from './TorrentData';
+import { getTorrentData } from '../../core';
 
 export const Card = (props) => {
     const [dataLoading, setDataLoading] = useState(false);
@@ -17,17 +18,18 @@ export const Card = (props) => {
     // onClick handler that makes api call to fetch magnet data for seperated link and set the state of files
     // it starts the loading spinner and stops when data is fetched
     // disables the TorrentDataButton when clicked
-    const getTorrentData = async (link) => {
+    const getData = async (link) => {
         try {
             setDataLoading(true);
             settorrentDataButton(false);
-            const torrentData = await axios.get(`https://tscrap.herokuapp.com/magnet?link=${link}`);
+
+            const torrentData = await getTorrentData(link);
+            if (!torrentData.status)
+                throw new Error(torrentData.err)
+
             setTorrent(torrentData.data);
-            if (torrentData.data) {
-                setDataLoading(false);
-                const { files } = torrentData.data;
-                setFiles(files);
-            }
+            setDataLoading(false);
+            setFiles(torrentData.data.files);
         } catch (err) {
             console.log(err);
         }
@@ -50,7 +52,7 @@ export const Card = (props) => {
                     <div className='col-12 accordion mt-2 justify-content-center align-items-center'>
                         <div className='accordion-item border-0 bg-dark'>
                             {showTorrentDataButton ? (
-                                <GetDataButton item={item} getTorrentData={getTorrentData} index={props.index} />
+                                <GetDataButton item={item} getTorrentData={getData} index={props.index} />
                             ) : null}
 
                             <div id={`acc${props.index}`} className={`accordion-collapse rounded border bg-dark collapse`}>

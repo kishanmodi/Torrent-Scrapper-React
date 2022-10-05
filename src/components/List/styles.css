@@ -1,0 +1,108 @@
+.list-containter {
+    display: grid;
+    place-content: center;
+}
+
+.list-containter .wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    border-radius: 5px;
+    background: #212529;
+    color: white;
+    max-width: 1500px;
+}
+
+.list-header,
+.list-item {
+    display: grid;
+    grid-template-columns: 1fr 5rem 4rem 4rem 5rem;
+    gap: 1rem;
+    padding: .7rem 1rem;
+}
+
+.list-header {
+    background: #2d3338;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+}
+
+.list-item {
+    cursor: pointer;
+}
+
+.list-item:hover {
+    background: #3b4349;
+}
+
+.list-item>div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.seeders {
+    color: rgb(30, 211, 30);
+}
+
+.leechers {
+    color: rgb(211, 66, 30);
+}
+
+
+/*
+Torrent details styles
+*/
+
+.list-item-torrent {
+    padding: .5rem 1rem;
+    margin: .5rem 1rem;
+    background: linear-gradient(to bottom, transparent, #2d3338);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header {
+    margin-bottom: 1rem;
+}
+
+.files {
+    padding: .5rem 1rem;
+    margin-bottom: .5rem;
+    background: #3b4349;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    font-family: monospace;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.747);
+
+    max-height: 11.6rem;
+    max-width: 500px;
+    overflow-y: auto;
+}
+
+.action-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.action-group button {
+    background: #FEBF32;
+    border: none;
+    margin-bottom: 1rem;
+    padding: .5rem .7rem;
+    border-radius: 100px;
+}
+
+.action-group button:last-child {
+    background: transparent;
+    border: 2px solid #FEBF32;
+    color: #FEBF32;
+}
