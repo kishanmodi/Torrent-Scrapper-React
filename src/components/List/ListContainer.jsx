@@ -7,7 +7,7 @@ import "./styles.css"
 export default function ListContainer({ item }) {
     const { items } = useContext(AppContext);
 
-    return (
+    return items.length === 0 ? null : (
         <div className='list-containter'>
             <div className='wrapper'>
                 <div className='list-header'>
