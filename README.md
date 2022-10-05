@@ -1,6 +1,6 @@
 # Torrent Scrapper
 
-A responsive web app created using React and BootStrap5 that provides you list of torrents and their magnet link fetched from 1337x.
+A responsive web application created using React and Bootstrap5 that provides you the list of torrents and their magnet link fetched from 1337x.
 
 ## Demo
 
@@ -48,16 +48,16 @@ Start the server
 
 ## Features
 
--   Light/dark mode toggle
--   Safe Search Filter
--   Copy Magnet Link/Open in uTorrent
--   Responsive
--   Ad Free
+- Light/dark mode toggle
+- Safe Search Filter
+- Copy Magnet Link/Open in uTorrent
+- Responsive
+- Ad Free
 
 ## Acknowledgements
 
--   [Torrent Scrapper API](https://github.com/kishanmodi/Torrent-Scrapper-API)
--   [Design Idea - SameerBidi](https://github.com/SameerBidi)
+- [Torrent Scrapper API](https://github.com/kishanmodi/Torrent-Scrapper-API)
+- [Design Idea - SameerBidi](https://github.com/SameerBidi)
 
 ## Feedback
 
