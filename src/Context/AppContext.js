@@ -4,6 +4,7 @@ export const AppContext = createContext(null);
 
 export const AppContextProvider = ({ children }) => {
     const [darkMode, setDarkMode] = useState(true);
+    const [listMode, setListMode] = useState(false);
     const [items, setItems] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const [query, setQuery] = useState('');
@@ -26,7 +27,9 @@ export const AppContextProvider = ({ children }) => {
                 safeSearch,
                 setSafeSearch,
                 dataAvail,
-                setDataAvail
+                setDataAvail,
+                listMode,
+                setListMode
             }}
         >
             {children}
