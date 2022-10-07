@@ -91,6 +91,8 @@ Torrent details styles
     color: rgba(255, 255, 255, 0.747);
 
     max-height: 11.6rem;
+    line-break: anywhere;
+    width: 100%;
     max-width: 500px;
     overflow-y: auto;
 }
@@ -115,6 +117,11 @@ Torrent details styles
 }
 
 @media (max-width: 700px) {
+    .list-containter {
+        width: 100vw;
+        transform: translateX(-1rem);
+    }
+
     .list-containter .wrapper {
         border-radius: 0;
     }
