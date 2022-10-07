@@ -11,6 +11,7 @@
     background: #212529;
     color: white;
     max-width: 1500px;
+    position: relative;
 }
 
 .list-header,
@@ -25,6 +26,12 @@
     background: #2d3338;
     padding: .5rem 1rem;
     border-radius: 5px;
+    position: sticky;
+    top: 0
+}
+
+.list-header .mob {
+    display: none;
 }
 
 .list-item {
@@ -84,6 +91,8 @@ Torrent details styles
     color: rgba(255, 255, 255, 0.747);
 
     max-height: 11.6rem;
+    line-break: anywhere;
+    width: 100%;
     max-width: 500px;
     overflow-y: auto;
 }
@@ -105,4 +114,72 @@ Torrent details styles
     background: transparent;
     border: 2px solid #FEBF32;
     color: #FEBF32;
+}
+
+@media (max-width: 700px) {
+    .list-containter {
+        width: 100vw;
+        transform: translateX(-1rem);
+    }
+
+    .list-containter .wrapper {
+        border-radius: 0;
+    }
+
+    .list-header,
+    .list-item {
+        grid-template-columns: 1fr 4rem 2rem 2rem 3rem;
+        gap: .2rem;
+        padding: .6rem .8rem;
+        font-size: .8rem;
+        border-radius: 0;
+    }
+
+    .list-header {
+        font-size: .9rem;
+    }
+
+    .list-header .nonMob {
+        display: none;
+    }
+
+    .list-header .mob {
+        display: unset;
+    }
+
+
+    .list-item>div,
+    .list-header>div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    /*
+    Torrent details styles
+    */
+
+    .list-item-torrent {
+        margin: .5rem 0rem;
+        border-radius: 0px;
+        gap: .2rem;
+    }
+
+    .header {
+        font-size: .9rem;
+    }
+
+    .action-group {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .action-group button {
+        background: #FEBF32;
+        border: none;
+        margin-left: 1rem;
+        padding: .2rem .5rem;
+        font-size: .95rem;
+    }
 }

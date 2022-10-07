@@ -13,8 +13,10 @@ export default function ListContainer({ item }) {
                 <div className='list-header'>
                     <div>Name</div>
                     <div>Size</div>
-                    <div>Seeders</div>
-                    <div>Leechers</div>
+                    <div className='nonMob'>Seeders</div>
+                    <div className='nonMob'>Leechers</div>
+                    <div className='mob'>[S]</div>
+                    <div className='mob'>[L]</div>
                     <div>Uploader</div>
                 </div>
                 {items.map((item, index) => (
