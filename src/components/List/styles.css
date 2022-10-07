@@ -115,11 +115,6 @@ Torrent details styles
 }
 
 @media (max-width: 700px) {
-    .list-containter {
-        width: 100vw;
-        transform: translateX(-1rem);
-    }
-
     .list-containter .wrapper {
         border-radius: 0;
     }
