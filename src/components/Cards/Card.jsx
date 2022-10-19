@@ -46,7 +46,7 @@ export const Card = (props) => {
     };
     return (
         <div className='col-xl-3 col-lg-4 col-md-6 mb-4 col-sm-12 col-12'>
-            <div className='card bg-dark text-light '>
+            <div className='card bg-dark text-light h-100'>
                 <div className='card-body row'>
                     <CardDetails item={item} />
                     <div className='col-12 accordion mt-2 justify-content-center align-items-center'>

@@ -13,6 +13,11 @@ export const SearchButton = (props) => {
                 if (query !== prevQuery) {
                     props.submitHandler(e.target.name);
                 }
+                // remove outline from button after 1s
+                setTimeout(() => {
+                    e.target.blur();
+                }
+                , 1000);
             }}
         >
             {props.buttonName}
