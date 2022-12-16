@@ -13,7 +13,7 @@ export const SearchContainer = () => {
             setLoading(true);
             setDataAvail(true);
             setItems([]);
-            const torrents = await axios.get(`https://tscrap.herokuapp.com/torrents?key=${query}&safe=${safeSearch}`);
+            const torrents = await axios.get(`https://tscrap.onrender.com/torrents?key=${query}&safe=${safeSearch}`);
             setItems(torrents.data);
             if (torrents.data.length === 0) {
                 console.log(torrents.data.length);
@@ -26,9 +26,8 @@ export const SearchContainer = () => {
     };
     return (
         <div
-            className={`container-fluid p-0 text-center  rounded-2 ${
-                darkMode ? ' bg-dark' : ' bg-light border border-dark'
-            }`}
+            className={`container-fluid p-0 text-center  rounded-2 ${darkMode ? ' bg-dark' : ' bg-light border border-dark'
+                }`}
         >
             <div className='row d-flex justify-content-center align-items-center py-3'>
                 <SearchBox />
