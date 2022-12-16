@@ -13,7 +13,7 @@ export const SearchContainer = () => {
             setLoading(true);
             setDataAvail(true);
             setItems([]);
-            const torrents = await axios.get(`https://tscrap.onrender.com/torrents?key=${query}&safe=${safeSearch}`);
+            const torrents = await axios.get(`https://la1ghi.deta.dev/torrents?key=${query}&safe=${safeSearch}`);
             setItems(torrents.data);
             if (torrents.data.length === 0) {
                 console.log(torrents.data.length);
